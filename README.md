@@ -1,71 +1,143 @@
-# 💳 Credit Card Fraud Detection
+# 🏦 Credit Risk Scoring System
 
-## 📌 Project Overview
-Credit card fraud accounts for less than 0.2% of transactions but causes significant financial losses annually. This project builds a **Machine Learning model** to detect fraudulent transactions with **high recall** while minimizing false alerts, using the well-known Credit Card Fraud dataset.
+## 🚀 Live Demo
+
+🔗 https://credit-risk-scoring-bysrinath.streamlit.app/
 
 ---
 
-## 📊 Business Problem
-Banks and financial institutions face:
-- High financial loss from undetected fraud
-- High operational costs from false positives
-- Need for a balanced solution that maximizes fraud detection while reducing false alerts
+## 📌 Project Overview
+
+This project builds an end-to-end **Credit Risk Scoring System** that predicts the probability of loan default and assists in automated loan decision-making.
+
+The system uses Machine Learning to estimate borrower risk and converts it into a **credit score (300–900 scale)** similar to real-world financial systems.
 
 ---
 
 ## 🎯 Objective
-- Build a model to **maximize recall** (catch most fraud cases)
-- Optimize **precision** to reduce unnecessary manual reviews
-- Recommend deployment threshold for production
+
+To predict whether a customer is likely to default on a loan and support financial institutions in making **data-driven lending decisions**.
 
 ---
 
-## 🗂 Repository Structure
+## 🧠 Key Features
+
+* 📊 Predicts **Probability of Default (PD)**
+* 🔢 Converts risk into **Credit Score (300–900)**
+* 🏦 Provides decision:
+
+  * ✅ APPROVE
+  * ⚠️ REVIEW (Manual Underwriting)
+  * ❌ REJECT
+* 📈 Interactive **Streamlit Web App**
+* 📥 Downloadable loan assessment report
 
 ---
 
-## ⚙️ Steps & Methodology
-1. **Exploratory Data Analysis**
-   - Checked class imbalance
-   - Scaled `Amount` and `Time`
-   - Prepared clean dataset
+## 🗂 Dataset
 
-2. **Modeling**
-   - Logistic Regression with `class_weight=balanced`
-   - Evaluated metrics (Precision, Recall, ROC-AUC)
-   - Tuned decision threshold for best fraud detection trade-off
-
-3. **Results**
-   - **ROC-AUC:** 0.98
-   - **Recall (Fraud):** 85% at threshold 0.35
-   - **Precision (Fraud):** 20% at threshold 0.35
-
-4. **Recommendations**
-   - Deploy model at threshold ≈ 0.35
-   - Auto-block top 1% risky transactions, review next 4% manually
-   - Retrain model quarterly
+* 📌 Home Credit Default Risk Dataset (Kaggle)
+* Contains customer financial, demographic, and loan-related features
 
 ---
 
-## 📈 Results Summary
-| Metric                  | Default (0.5) | Tuned (0.35) |
-|-------------------------|---------------|--------------|
-| Recall (Fraud)          | 92%           | 85%          |
-| Precision (Fraud)       | 6%            | 20%          |
-| ROC-AUC                 | 0.98          | 0.98         |
+## 🔍 Exploratory Data Analysis (EDA)
+
+Key insights:
+
+* Dataset is **highly imbalanced** (more non-default cases)
+* Younger customers show slightly higher default rates
+* Shorter employment duration increases risk
+* Engineered features like **credit-to-income ratio** are strong predictors
+* Raw credit amount alone is not sufficient
 
 ---
 
-## 📂 Key Files
-- 📓 **[EDA Notebook](notebooks/1_exploratory_analysis.ipynb)**  
-- 📓 **[Modeling Notebook](notebooks/2_modeling_and_tuning.ipynb)**  
-- 📄 **[Business Case](docs/business_case.md)**  
-- 📄 **[Executive Summary](reports/executive_summary.pdf)**  
+## ⚙️ Feature Engineering
+
+* Credit-to-Income Ratio
+* Income-to-Credit Ratio
+* Employment-to-Age Ratio
+* External Risk Scores (EXT_SOURCE)
 
 ---
 
-## 🛠 Installation
-```bash
-git clone <https://github.com/srinath2327/Credit-Card-Fraud-Detection>
-cd credit-card-fraud-detection
-pip install -r requirements.txt
+## 🤖 Models Used
+
+| Model               | ROC-AUC Score             |
+| ------------------- | ------------------------- |
+| Logistic Regression | 0.63                      |
+| Random Forest       | 0.70                      |
+| XGBoost             | **0.74 (Selected Model)** |
+
+👉 XGBoost was selected due to best performance
+
+---
+
+## 🏗️ Tech Stack
+
+* Python
+* Pandas, NumPy
+* Scikit-learn
+* XGBoost
+* Streamlit
+
+---
+
+## 🏦 Business Impact
+
+This system helps financial institutions:
+
+* Reduce loan default risk
+* Automate credit decision processes
+* Identify high-risk customers early
+* Improve lending efficiency
+
+---
+
+## 🖥️ Application Features
+
+* Clean **bank-style UI**
+* Real-time risk prediction
+* Credit score generation
+* Decision support system
+* Explainable AI insights
+
+---
+
+## 📸 Screenshots
+
+### 🔹 Input Page
+![Input UI](screenshot1.png)
+
+### 🔹 Results Page
+![Results UI](screenshot2.png)
+---
+
+## 📂 Project Structure
+
+```
+app.py
+credit_risk_model.pkl
+model_columns.pkl
+requirements.txt
+notebook.ipynb
+```
+
+---
+
+## 📌 Future Improvements
+
+* Integrate real credit bureau data (CIBIL-like scoring)
+* Improve model accuracy using advanced techniques
+* Add multi-page dashboard (portfolio analytics)
+* Deploy using cloud infrastructure (AWS/GCP)
+
+---
+
+## 👨‍💻 Author
+
+**Sai Datta Srinath**
+
+---
+
